@@ -62,4 +62,23 @@ public class CastUtil {
         }
         return value;
     }
+
+    public static long castLong(Object obj){
+        return castLong(obj,0);
+    }
+
+    public static long castLong(Object obj,long defaultValue){
+        long longValue = defaultValue;
+        if(obj != null){
+            String stringValue = castString(obj);
+            if(StringUtils.isNotEmpty(stringValue)){
+                try{
+                    longValue = Long.parseLong(stringValue);
+                }catch (Exception e){
+                    longValue = defaultValue;
+                }
+            }
+        }
+        return longValue;
+    }
 }
